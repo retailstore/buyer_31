@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Create Purchase Order</title>
+	 	<style> 	 
+		 	.value_1 { 
+		 		border:2px solid Forestgreen; 
+		 		width:130px; 
+		 		height:20px; 
+		 		background:white; color:#696969;
+		 	} 
+		 	 
+		 	@media (max-width: 620px) {
+				.flex-container {
+					-webkit-flex-direction: column;
+    				flex-direction: column;
+				}
+			}
+			
+		 	#display { 
+		 		width:130px; 
+		 		height:20px; 
+		 		background:white; color:#696969; 
+		 	}
+		 	 
+		 	.flex-container { 
+		 		display: flex 
+		 	} 
+		 	 
+		 	.main { 
+		 		border:2px solid #1E90FF; 
+		 		background-color: rgba(240, 240, 240, 1); 
+		 		height:60%; 
+		 		width:80%;
+		 		padding: 2%;
+		 	} 
+		 	 
+		 	.add-btn { 
+		 		color:white; 
+		 		background: linear-gradient(rgb(71, 180, 245) 5%, hsl(202, 91%, 42%) 100%) rgb(71, 180, 245); 
+		 		width: 85px; 
+		 		height: 25px; 
+		 		white-space:normal; 
+		 		margin: 10px; 
+		 	} 
+		 	.create-btn { 
+		 		color:white; 
+		 		background: #3333cc; 
+		 		width: 90px; 
+		 		height: 40px; 
+		 		white-space:normal; 
+		 		margin: 20px; 
+		 		border-radius: 8px; 
+		 	} 
+		 	 
+		 	.raw-material { 
+		 		border: 1px solid black; 
+		 		border-collapse: collapse; 
+				z-index: 0;
+		 	} 
+		 	 
+		 	th, td { 
+		 		border: 1px solid black; 
+		 		border-collapse: collapse; 
+		 	} 
+		 	
+		 	table {
+		 		width: 100%;
+		 	}
+
+		 	th { 
+		 		background-color: #3333cc; 
+		 		color: white; 
+		 	} 
+
+		 	.flex-item {
+		 		width: 50%;
+		 	}
+
+		 	.s-table {
+		 		width: 80%;
+		 	}
+			
+			.success-box {
+				position: absolute;
+				height: 125px;
+				width: 30%;
+				margin: 20% 0 0 20%;
+				z-index: 2000;
+				top: -20px;
+				background: linear-gradient(#e5eaef 5%, rgb(109, 192, 241) 100%) #e5eaef; 
+				border: 1px solid blue;
+				padding-top: 15px;
+			}
+
+			span {
+				display: inline-block;
+			}
+	 	</style> 
+	</head> 
+  
+	<body> 
+		<div class="main"> 
+			<image src="logo_pg.png" style="height: 54px; width: 54px; position: relative; top: 10px; right: 10px; float:right;"><br>
+			<h2 style="margin: auto; width: 50%; text-align:center; padding:5px;">Create Purchase Order</h2> 
+			<div class="flex-container"> 
+				<div class="flex-item">
+					<span id="display">Vendor#</span> 
+					<span class="value_1 vendor-no"><select style="width:129px"><option>Green Earth</option></select></span> 
+					<br><br>
+					<span id="display">Expected Delivery Date</span> 
+					<span class="value_1 d-date"><input type="date" style="width:125px"></span> 
+					<br><br>
+					<span id="display">Contract ID</span> 
+					<span class="value_1 c-id"><input type="text" style="width:126px"></span> 
+
+				</div>	 
+				<div class="flex-item">
+					<span id="display">Order Date</span> 
+					<span class="value_1 o-date"><input type="date" style="width:125px;"></span> 
+					<br><br>
+					<span id="display">Delivery To Location</span> 
+					<span class="value_1 location"><input type="text" style="width:126px;"></span> 
+					<br><br>
+					<span id="display">RFQID</span> 
+					<span class="value_1 rfqid"><input type="text" style="width:126px;"></span> 
+				</div> 
+			</div>
+			<br>
+			<br>
+			<caption>Order Details</caption> 
+			<center> 
+			<div style="overflow:auto;"> 
+				<table class="raw-material"> 
+					 
+					<tr> 
+						<th style="border:none"></th>
+						<th id="th">Item Identifier</th> 
+						<th id="th">Contract ID</th> 
+						<th id="th">Product</th> 
+						<th id="th">Lot#</th> 
+						<th id="th">Qty</th> 
+						<th id="th">Unit Price($)</th> 
+						<th id="th">Tax Rate</th> 
+						<th id="th">Tax</th> 
+						<th id="th">Price($)</th> 
+					</tr> 
+					
+					<tr> 	
+						<td style="border:none"><input name="record" type="checkbox"></td>
+						<td id="td"> It-Seed-Ps </td> 
+						<td style="background-color:#b3ccff;">PGCI2065</td> 
+						<td style="background-color:#b3ccff;">Psyllium Seeds</td> 
+						<td id="td">1</td> 
+						<td id="td">10</td> 
+						<td id="td">10.50</td> 
+						<td id="td">0 %</td> 
+						<td style="background-color:#b3ccff;">0.00</td> 
+						<td id="l_price" style="background-color:#b3ccff;">100.50</td> 
+					</tr> 
+				</table> 
+			</div> 
+
+			<div> 
+				<div class="flex-container" style="width:100%"> 
+					<div style="width:50%; float: left;"> 
+						<div> 
+							<button class="delete-row add-btn">Delete Item</button> 
+							<button class="add-row add-btn">Add Item</button> 	
+						</div> 
+					</div> 
+					<div style="width:50%; float: right;">
+						<span id="display" style="padding:2px;">Subtotal($)</span> 
+						<span class="value_1 subtotal" style="padding:2px;">100.50</span> 
+						<br>
+						<span id="display" style="padding:2px;">Tax($)</span> 
+						<span class="value_1" style="padding:2px;">0.00</span> 
+						<br>
+						<span id="display" style="padding:2px;">Total($)</span> 
+						<span class="value_1 total" style="padding:2px;">100.50</span> 
+					</div> 
+				</div> 
+				<div> 
+					<button id="create" class="create-btn">Create</button> 
+					<button id="cancel" class="create-btn" onclick="back_login()">Cancel</button> 
+				</div> 
+			</div> 
+			</center> 
+			
+			<div class="success-box" style="display:none;">
+				<center>
+					PO created successfully!! 
+					<br>
+					<br>
+					<div id="display" class="message value_1"></div>
+				</center>
+			</div> 
+		</div> 
+	</body> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+	        $(".add-row").click(function(){
+	            var data = "<tr><td><input type='checkbox' name='record'></td><td>It-Seed-Ps</td><td style='background-color:#b3ccff;'>PGCI2065</td><td style='background-color:#b3ccff;'>Psyllium Seeds</td><td>1</td><td>0</td><td>10.50</td><td>0 %</td><td style='background-color:#b3ccff;'>0.00</td><td style='background-color:#b3ccff;' id='l_price'>0</td></tr>";
+	            $("table tbody").append(data);
+		    });
+		        
+	        // Find and remove selected table rows
+	         $(".delete-row").click(function(){
+	            $(".raw-material tbody").find('input[name="record"]').each(function(){
+	            	if($(this).is(":checked")){
+	                    $(this).parents("tr").remove();
+	                }
+					
+					if (($("#l_price").text()) == "") {
+						$(".subtotal").text("0.00")
+						$(".total").text("0.00")
+					}
+					else {
+						$(".subtotal").text($("#l_price").text())
+						$(".total").text($("#l_price").text())
+					}
+	            });
+	        });
+	    });
+		$("#create").click(function() {
+			$(".message").html("PGPO1234");
+			$(".success-box").toggle();
+		})
+		function alert() {
+			$(".message").html("PGPO1234");
+			$(".success-box").toggle();
+		}
+		function back_login() {
+			window.location.href = "B_Welcome.html"
+		}
+	</script>
+
+</html>
