@@ -1,0 +1,109 @@
+<!doctype html>
+<head>
+
+<style>
+
+</style>
+</head>
+<body>
+<form style="border:2px solid #1E90FF; background-color: rgba(240, 240, 240, 1); height:400px; width:700px;">
+<center>
+	<h2 style="color:#696969">Welcome Ms. John</h2>
+	<p style="width:200px; height:20px; background:white; color: #e26012;"><label style="padding-left: 8px;">Please select your option</label></p>
+	<image src="logo_pg.png" style="height: 54px; width: 54px; position: absolute; top: 10px; right: 10px;"><br>
+	<label style="position: absolute; top: 10px; right: 10px;">Date:- <label id="thetoday"></label></label>
+	<table><form>
+	<tr>
+		<td><input type="radio" name="opt" value="Upload Purchase Order" style="margin-right:25px;"/>
+		<label style="border:2px solid Forestgreen; width:200px; height:20px; background:white; color:#696969;"><label style="padding-left: 8px; padding-right:40px;">Upload Purchase Order</label></label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="opt" value="Check Purchase Order status" style="margin-right:25px;"/>
+		<label style="border:2px solid Forestgreen; width:200px; height:20px; background:white; color:#696969;"><label style="padding-left: 8px; padding-right:3px;">Check Purchase Order Status</label></label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="opt" value="Create Purchase Order" style="margin-right:25px;"/><label style="border:2px solid Forestgreen; width:200px; height:20px; background:white; color:#696969;"><label style="padding-left: 8px; padding-right:127px;">Create PO</label></label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="opt" value="Update Purchase Order" style="margin-right:25px;"/><label style="border:2px solid Forestgreen; width:200px; height:20px; background:white; color:#696969;"><label style="padding-left: 8px; padding-right:122px;">Update PO</label></label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="opt" value="Update Purchase Order status" style="margin-right:25px;"/><label style="border:2px solid Forestgreen; width:200px; height:20px; background:white; color:#696969;"><label style="padding-left: 8px;">Update Purchase Order Status</label></label></td>
+	</tr></form>
+	<tr>
+		<td><br>
+		<center><input class="button" type="submit" value="Open" id="submit" name="opt" style="color:white; background: linear-gradient(rgb(71, 180, 245) 5%, hsl(202, 91%, 42%) 100%) rgb(71, 180, 245);
+		width: 100px; height: 50px">
+		<span style="padding-left:75px">
+		<input class="button" value="Go back to Login Page" onclick="back_login()" style="white-space:normal; color:white; background: linear-gradient(rgb(71, 180, 245) 5%, hsl(202, 91%, 42%) 100%) rgb(71, 180, 245); width: 100px;
+		height: 50px; wordwrap: break-word"></span></center>
+		</td>
+	</tr>
+	</table>
+
+</center>
+</form>
+<script type="text/javascript">
+
+		var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+
+		var date=new Date();
+		var mName = month[date.getMonth()];
+
+		var day=date.getDate();
+		<!-- var month=date.getMonth()+1; -->
+		var year=date.getFullYear();
+		if(day<10)
+			day="0"+day;
+		var today=mName+" "+day+", "+year;
+		document.getElementById("thetoday").innerHTML=String(today);
+</script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			$("#submit").click(function(e){
+				var number_of_checked_checkbox = $("input[name=opt]:checked").length;
+				if(number_of_checked_checkbox == 0){
+					alert("select any one");
+				}
+				else{
+var option = $('input[name=opt]:checked').val()
+					switch(option) {
+						case "Upload Purchase Order":
+							html = "C_UploadPurchaseOrder.html"
+							break;
+						case "Check Purchase Order status":
+							html = "D_CheckPurchaseOrderStatus.html"
+							break;
+						case "Create Purchase Order":
+							html = "F_create_purchase_order.html"
+							break;
+						case "Update Purchase Order":
+							html = "G_Update_purchase_order.html"
+							break;
+						case "Update Purchase Order status":
+							html = "H_UpdatePurchaseOrderStatus.html"
+							break;
+					}
+					$("form").attr('action', html);
+				}
+			});
+			
+			function back_login() {
+				window.location.href = "A_Login.html"
+			}
+		</script>
+</body>
+</html>
